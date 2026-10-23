@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Multi-Container App</title>
+</head>
+<body>
+
+    <h1>Hello from Docker! 🚀</h1>
+
+    <p>This website is running inside an Nginx container.</p>
+
+    <button onclick="testBackend()">Test Backend</button>
+
+    <p id="result"></p>
+
+    <script>
+        async function testBackend() {
+            const result = document.getElementById("result");
+
+            try {
+                const response = await fetch("/api/visit");
+                const message = await response.text();
+
+                result.textContent = message;
+            } catch (error) {
+                result.textContent = "Could not connect to backend.";
+                console.error(error);
+            }
+        }
+    </script>
+
+</body>
+</html>
